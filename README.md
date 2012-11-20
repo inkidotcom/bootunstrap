@@ -22,6 +22,13 @@ You'll need to have [Git](http://git-scm.com/) and  [NodeJS](http://nodejs.org/)
 
 *The build script that currently does all the build magic is written as a shell script so it may only work in *NIX sytems (should work with cygwin but haven't fully tested this.)
 
+You'll want to make sure your **NODE_PATH** environment variable is set up
+
+    $ echo 'export NODE_PATH="'$(npm root -g)'"' >> ~/.bashrc && . ~/.bashrc
+
+In my case, I use **~/.profile** so I actually use...
+
+    $ echo 'export NODE_PATH="'$(npm root -g)'"' >> ~/.profile && . ~/.profile
 
 
 QUICK-START

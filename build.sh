@@ -4,6 +4,7 @@ OPTIONS="clean bootstrap update quit"
 ARGS="clean|bootstrap|update"
 BOOTSTRAP_LESS=./less/bootstrap.less
 BOOTSTRAP_RESPONSIVE_LESS=./less/responsive.less
+VERSION="v0.1.0"
 
 
 function clean {
@@ -18,7 +19,7 @@ function clean {
 
 function update () {
 	echo -e "\033[32mupdating bootstrap..."
-	echo -e "checking out default (discarding changes)...\033[31m"
+	echo -e "discarding changes...\033[31m"
 	cd ./bootstrap && git checkout -- .
 	echo -e "\033[32mdone"
 	if [ -z "$1" ]
@@ -29,9 +30,6 @@ function update () {
 		echo -e "pull origin $1 bootstrap...\033[31m"
 		git pull origin $1
 	fi
-	echo -e "\033[32mdone"
-	echo -e "copy local less files...\033[31m"
-	cp ../less/* ./less/
 	echo -e "\033[32mdone"
 	echo -e "update finished\033[0m"
 }
@@ -92,6 +90,8 @@ else
 		bootstrap
 	elif [ $1 = 'update' ]; then
 		update $2
+	elif [ $1 = '-v' ]; then
+	  echo $VERSION
 	else
 		echo -e "\033[31musage: $0 [$ARGS]\033[0m"
 		exit
