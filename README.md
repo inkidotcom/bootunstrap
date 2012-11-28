@@ -38,7 +38,7 @@ Checkout the Bootunstrap project and build
 
     $ git clone https://github.com/inkidotcom/bootunstrap.git bootunstrap
     $ cd bootunstrap
-    $ git submodule update --recursive
+    $ git submodule update --init
     $ ./build.sh bootstrap
 
 open index.html in your browser
