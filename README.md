@@ -3,8 +3,15 @@
 Information:
 ---------------------
 
-Bootstrap based project that keeps Bootstrap as a separate submodule
+Bootstrap based project that keeps Bootstrap as a separate submodule.
 
+Basically, this allows you to modify the local versions of variables.less, bootstrap.less and responsive.less (or even override other bootstrap .less files) while keeping the original bootstrap repository isolated and easily updateable (without crazy merges and such).
+
+Once you make changes to your own variables.less file, simply run `$ ./build.sh bootstrap`
+
+If there's an update to bootstrap, run `$ ./build.sh update` and re-build `$ ./build.sh bootstrap`
+
+Your changes remain intact, as long as no major architectural changes have happened in bootstrap.
 
 
 Dependancies:
