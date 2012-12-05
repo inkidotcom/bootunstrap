@@ -1,0 +1,20 @@
+// import orginal bootstrap file
+@import "../bootstrap/less/navbar.less";
+
+// override what we need to
+.navbar-inverse .brand,
+.navbar-inverse .nav > li a {
+  text-shadow: 0 1px 0 #FDB754;
+}
+
+.navbar .nav li.dropdown:hover > .dropdown-toggle .caret {
+  border-top-color: #555;
+  border-bottom-color: #555;
+}
+.navbar-inverse .nav li.dropdown:hover > .dropdown-toggle .caret {
+  border-top-color: white;
+  border-bottom-color: white;
+}
+.navbar-inverse .brand, .navbar-inverse .nav > li a {
+  text-shadow: none;
+}
