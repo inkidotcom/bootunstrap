@@ -1,7 +1,4 @@
 .DS_Store
-css/bootstrap
-img/bootstrap
-js/bootstrap
 
 lib-cov
 *.seed
