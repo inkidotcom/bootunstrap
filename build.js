@@ -57,8 +57,8 @@ var commands = { };
 
 commands.clean = function() {
 	console.log(f.blue('starting clean...'));
-	console.log(f.green('removing img/ js/ css/ directories...'));
-	shell.rm('-rf', [cwd+'/css/bootstrap', cwd+'/img/bootstrap', cwd+'/js/bootstrap']);
+	console.log(f.green('removing js/ css/ directories...'));
+	shell.rm('-rf', [cwd+'/css/bootstrap', cwd+'/js/bootstrap']);
 	console.log(f.blue('clean done'));
 }
 
@@ -69,27 +69,26 @@ commands.bootstrap = function() {
 	
 	console.log(f.blue('creating local bootstrap directories...'));
 	shell.mkdir(cwd+'/css/bootstrap');
-	shell.mkdir(cwd+'/img/bootstrap');
 	shell.mkdir(cwd+'/js/bootstrap');
 	console.log(f.blue('finished creating local bootstrap directories...'));
 	
-	console.log(f.green('copying bootstrap images...'));
-	shell.cp('-R', cwd+'/bootstrap/img/*', cwd+'/img/bootstrap/');
-	console.log(f.green('finished copying bootstrap images...'));
+	//console.log(f.green('copying bootstrap images...'));
+	//shell.cp('-R', cwd+'/bootstrap/img/*', cwd+'/img/bootstrap/');
+	//console.log(f.green('finished copying bootstrap images...'));
 	
 	console.log(f.green('compiling bootstrap less files...'));
 	var cont = shell.exec('recess --compile '+cwd+'/less/bootstrap.less > '+cwd+'/css/bootstrap/bootstrap.css', { silent: true }).output;
 	cont.to(cwd+'/css/bootstrap/bootstrap.css');
 	cont = shell.exec('recess --compress '+cwd+'/less/bootstrap.less > '+cwd+'/css/bootstrap/bootstrap.min.css', { silent: true }).output;
 	cont.to(cwd+'/css/bootstrap/bootstrap.min.css');
-	cont = shell.exec('recess --compile '+cwd+'/less/responsive.less > '+cwd+'/css/bootstrap/responsive.css', { silent: true }).output;
-	cont.to(cwd+'/css/bootstrap/responsive.css');
-	cont = shell.exec('recess --compress '+cwd+'/less/responsive.less > '+cwd+'/css/bootstrap/responsive.min.css', { silent: true }).output;
-	cont.to(cwd+'/css/bootstrap/responsive.min.css');
+	//cont = shell.exec('recess --compile '+cwd+'/less/responsive.less > '+cwd+'/css/bootstrap/responsive.css', { silent: true }).output;
+	//cont.to(cwd+'/css/bootstrap/responsive.css');
+	//cont = shell.exec('recess --compress '+cwd+'/less/responsive.less > '+cwd+'/css/bootstrap/responsive.min.css', { silent: true }).output;
+	//cont.to(cwd+'/css/bootstrap/responsive.min.css');
 	console.log(f.green('finished compiling bootstrap less files...'));
 	
 	console.log(f.green('compiling bootstrap js files...'));
-	shell.cat(cwd+'/bootstrap/js/bootstrap-transition.js', cwd+'/bootstrap/js/bootstrap-alert.js', cwd+'/bootstrap/js/bootstrap-button.js', cwd+'/bootstrap/js/bootstrap-carousel.js', cwd+'/bootstrap/js/bootstrap-collapse.js', cwd+'/bootstrap/js/bootstrap-dropdown.js', cwd+'/bootstrap/js/bootstrap-modal.js', cwd+'/bootstrap/js/bootstrap-tooltip.js', cwd+'/bootstrap/js/bootstrap-popover.js', cwd+'/bootstrap/js/bootstrap-scrollspy.js', cwd+'/bootstrap/js/bootstrap-tab.js', cwd+'/bootstrap/js/bootstrap-typeahead.js', cwd+'/bootstrap/js/bootstrap-affix.js').to(cwd+'/js/bootstrap/bootstrap.js');
+	shell.cat(cwd+'/bootstrap/js/transition.js', cwd+'/bootstrap/js/alert.js', cwd+'/bootstrap/js/button.js', cwd+'/bootstrap/js/carousel.js', cwd+'/bootstrap/js/collapse.js', cwd+'/bootstrap/js/dropdown.js', cwd+'/bootstrap/js/modal.js', cwd+'/bootstrap/js/tooltip.js', cwd+'/bootstrap/js/popover.js', cwd+'/bootstrap/js/scrollspy.js', cwd+'/bootstrap/js/tab.js', cwd+'/bootstrap/js/affix.js').to(cwd+'/js/bootstrap/bootstrap.js');
 	cont = shell.exec('uglifyjs -nc '+cwd+'/js/bootstrap/bootstrap.js > '+cwd+'/js/bootstrap/bootstrap.min.tmp.js', { silent: true }).output;
 	cont.to(cwd+'/js/bootstrap/bootstrap.min.tmp.js');
 	var copyright = shell.echo("/*!\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/").to(cwd+'/js/bootstrap/copyright.js');
