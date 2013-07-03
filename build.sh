@@ -3,7 +3,6 @@
 OPTIONS="clean bootstrap update quit"
 ARGS="clean|bootstrap|update"
 BOOTSTRAP_LESS=./less/bootstrap.less
-BOOTSTRAP_RESPONSIVE_LESS=./less/responsive.less
 VERSION="v0.1.0"
 
 
@@ -42,8 +41,6 @@ function bootstrap {
 	echo "compiling less files..."
 	recess --compile $BOOTSTRAP_LESS > css/bootstrap/bootstrap.css
 	recess --compress $BOOTSTRAP_LESS > css/bootstrap/bootstrap.min.css
-	recess --compile $BOOTSTRAP_RESPONSIVE_LESS > css/bootstrap/bootstrap-responsive.css
-	recess --compress $BOOTSTRAP_RESPONSIVE_LESS > css/bootstrap/bootstrap-responsive.min.css
 	echo "done"
 	echo "building js files..."
 	cat bootstrap/js/transition.js bootstrap/js/alert.js bootstrap/js/button.js bootstrap/js/carousel.js bootstrap/js/collapse.js bootstrap/js/dropdown.js bootstrap/js/modal.js bootstrap/js/tooltip.js bootstrap/js/popover.js bootstrap/js/scrollspy.js bootstrap/js/tab.js bootstrap/js/affix.js > js/bootstrap/bootstrap.js
