@@ -3,14 +3,12 @@
 OPTIONS="clean bootstrap update quit"
 ARGS="clean|bootstrap|update"
 BOOTSTRAP_LESS=./less/bootstrap.less
-BOOTSTRAP_RESPONSIVE_LESS=./less/responsive.less
 VERSION="v0.1.0"
 
 
 function clean {
 	echo -e "\033[32mstarting clean..."
-	echo -e "removing img/ js/ css/ directories...\033[31m"
-	rm -r img/bootstrap
+	echo -e "removing js/ css/ directories...\033[31m"
 	rm -r js/bootstrap
 	rm -r css/bootstrap
 	echo -e "\033[32mdone"
@@ -37,21 +35,15 @@ function update () {
 function bootstrap {
 	echo -e "\033[32mstarting bootstrap..."
 	echo "creating directories..."
-	mkdir -p img/bootstrap
 	mkdir -p css/bootstrap
 	mkdir -p js/bootstrap
-	echo "done"
-	echo "copying images..."
-	cp bootstrap/img/* img/bootstrap/
 	echo "done"
 	echo "compiling less files..."
 	recess --compile $BOOTSTRAP_LESS > css/bootstrap/bootstrap.css
 	recess --compress $BOOTSTRAP_LESS > css/bootstrap/bootstrap.min.css
-	recess --compile $BOOTSTRAP_RESPONSIVE_LESS > css/bootstrap/bootstrap-responsive.css
-	recess --compress $BOOTSTRAP_RESPONSIVE_LESS > css/bootstrap/bootstrap-responsive.min.css
 	echo "done"
 	echo "building js files..."
-	cat bootstrap/js/bootstrap-transition.js bootstrap/js/bootstrap-alert.js bootstrap/js/bootstrap-button.js bootstrap/js/bootstrap-carousel.js bootstrap/js/bootstrap-collapse.js bootstrap/js/bootstrap-dropdown.js bootstrap/js/bootstrap-modal.js bootstrap/js/bootstrap-tooltip.js bootstrap/js/bootstrap-popover.js bootstrap/js/bootstrap-scrollspy.js bootstrap/js/bootstrap-tab.js bootstrap/js/bootstrap-typeahead.js bootstrap/js/bootstrap-affix.js > js/bootstrap/bootstrap.js
+	cat bootstrap/js/transition.js bootstrap/js/alert.js bootstrap/js/button.js bootstrap/js/carousel.js bootstrap/js/collapse.js bootstrap/js/dropdown.js bootstrap/js/modal.js bootstrap/js/tooltip.js bootstrap/js/popover.js bootstrap/js/scrollspy.js bootstrap/js/tab.js bootstrap/js/affix.js > js/bootstrap/bootstrap.js
 	uglifyjs -nc js/bootstrap/bootstrap.js > js/bootstrap/bootstrap.min.tmp.js
 	echo "/*!\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > js/bootstrap/copyright.js
 	cat js/bootstrap/copyright.js js/bootstrap/bootstrap.min.tmp.js > js/bootstrap/bootstrap.min.js
