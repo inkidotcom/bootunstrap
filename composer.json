@@ -1,0 +1,20 @@
+{
+    "name": "inki/bootunstrap",
+    "type": "library",
+    "description": "maintainable Bootstrap integration made easy",
+    "keywords": ["bootstrap", "shell"],
+    "homepage": "http://inkidotcom.github.io/bootunstrap/",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Manny Ramirez",
+            "email": "inki@inki.com",
+            "role": "Developer"
+        }
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.0.0-wip"
+        }
+    }
+}
